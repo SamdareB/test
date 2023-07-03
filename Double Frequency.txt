@@ -1,0 +1,40 @@
+#include <iostream>
+#include <unordered_map>
+#include <vector>
+ 
+std::vector<int> findDoubleElements(const std::vector<int>& nums) {
+    std::unordered_map<int, int> frequency;
+    std::unordered_map<int, bool> hasDouble;
+ 
+    // Count the frequency of each number and track if it has a double
+    for (int num : nums) {
+        frequency[num]++;
+ 
+    }
+ 
+    std::vector<int> result;
+ 
+    // Check if there exists exactly one element that is twice the current number
+    for (int num : nums) {
+        if (frequency[num]&&frequency[num*2]==1) {
+            result.push_back(num);
+        }
+    }
+ 
+    return result;
+}
+ 
+int main() {
+    std::vector<int> nums = {1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 8};
+    std::vector<int> result = findDoubleElements(nums);
+ 
+    // Print the output
+    std::cout << "Output: ";
+    for (int num : result) {
+        std::cout << num << " ";
+    }
+    std::cout << std::endl;
+ 
+    return 0;
+}
+ 
